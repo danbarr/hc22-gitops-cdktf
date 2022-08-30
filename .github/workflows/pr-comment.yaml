@@ -22,7 +22,7 @@ jobs:
         run: yarn install
 
       - name: Generate module and provider bindings
-        run: npx cdktf get
+        run: npx cdktf-cli get
 
       - name: Run Terraform CDK
         uses: hashicorp/terraform-cdk-action@v0.1.0
