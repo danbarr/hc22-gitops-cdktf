@@ -29,7 +29,7 @@ jobs:
         with:
           terraformVersion: 1.2.8
           cdktfVersion: 0.12.2
-          stackName: my-stack
+          stackName: MyStack
           mode: plan-only
           terraformCloudToken: ${{ secrets.TF_API_TOKEN }}
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
