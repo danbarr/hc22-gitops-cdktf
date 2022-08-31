@@ -26,8 +26,6 @@ jobs:
 
       - name: Run Terraform CDK
         uses: hashicorp/terraform-cdk-action@v0.1.0
-        env:
-          TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
         with:
           terraformVersion: 1.2.8
           cdktfVersion: 0.12.2
