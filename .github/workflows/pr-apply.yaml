@@ -1,6 +1,9 @@
-name: "Comment a Plan on a PR"
+name: "Apply Stack after PR is Merged"
 
-on: [pull_request]
+on:
+  push:
+    branches:
+      - main
 
 permissions:
   contents: read
@@ -22,16 +25,14 @@ jobs:
         run: yarn install
 
       - name: Generate module and provider bindings
-        run: npx cdktf-cli get
+        run: npx cdktf get
 
       - name: Run Terraform CDK
         uses: hashicorp/terraform-cdk-action@v0.1.0
-        env:
-          TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
         with:
           terraformVersion: 1.2.8
           cdktfVersion: 0.12.2
           stackName: hc22-gitops-cdktf
-          mode: plan-only
+          mode: auto-approve-apply
           terraformCloudToken: ${{ secrets.TF_API_TOKEN }}
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
