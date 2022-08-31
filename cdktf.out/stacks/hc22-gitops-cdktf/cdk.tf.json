@@ -33,7 +33,7 @@
           }
         },
         "ami": "10.255.3.253",
-        "instance_type": "t3.micro",
+        "instance_type": "t3.small",
         "tags": {
           "Name": "CDKTF-Demo"
         }
