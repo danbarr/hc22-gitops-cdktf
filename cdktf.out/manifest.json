@@ -1,0 +1,13 @@
+{
+  "version": "0.12.2",
+  "stacks": {
+    "hc22-gitops-cdktf": {
+      "name": "hc22-gitops-cdktf",
+      "constructPath": "hc22-gitops-cdktf",
+      "workingDirectory": "stacks/hc22-gitops-cdktf",
+      "synthesizedStackPath": "stacks/hc22-gitops-cdktf/cdk.tf.json",
+      "annotations": [],
+      "dependencies": []
+    }
+  }
+}

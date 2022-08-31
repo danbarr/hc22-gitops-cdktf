@@ -1,6 +1,10 @@
 name: "Comment a Plan on a PR"
 
-on: [pull_request]
+on:
+  pull_request:
+  push:
+    branches:
+      - main
 
 permissions:
   contents: read
@@ -8,8 +12,10 @@ permissions:
 
 jobs:
   terraform:
-    name: "Terraform CDK Diff"
+    name: "Terraform CDK Synth"
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -25,13 +31,10 @@ jobs:
         run: npx cdktf-cli get
 
       - name: Run Terraform CDK
-        uses: hashicorp/terraform-cdk-action@v0.1.0
-        env:
-          TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
+        run: npx cdktf-cli synth
+
+      - name: Check in
+        uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          terraformVersion: 1.2.8
-          cdktfVersion: 0.12.2
-          stackName: hc22-gitops-cdktf
-          mode: plan-only
-          terraformCloudToken: ${{ secrets.TF_API_TOKEN }}
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          commit_message: Synthesized Terraform configuration
+          file_pattern: cdktf.out/
