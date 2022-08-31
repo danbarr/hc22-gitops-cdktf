@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   terraform:
-    name: "Terraform CDK Diff"
+    name: "Terraform CDK Apply"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
