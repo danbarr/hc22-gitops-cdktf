@@ -9,6 +9,6 @@ export class Tfvars extends Construct {
 
     this.awsRegion = 'eu-west-1';
 
-    this.amiId = '10.255.3.253';
+    this.amiId = 'ami-08a9dc8f6d1c4f806';
   }
 }
