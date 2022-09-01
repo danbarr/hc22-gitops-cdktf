@@ -32,4 +32,4 @@ jobs:
           stackName: hc22-gitops-cdktf
           mode: plan-only
           terraformCloudToken: ${{ secrets.TF_API_TOKEN }}
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          githubToken: ${{ secrets.GITHUB_TOKEN }}

@@ -35,4 +35,4 @@ jobs:
           stackName: hc22-gitops-cdktf
           mode: auto-approve-apply
           terraformCloudToken: ${{ secrets.TF_API_TOKEN }}
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
