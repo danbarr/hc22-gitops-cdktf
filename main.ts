@@ -15,7 +15,7 @@ class MyStack extends TerraformStack {
 
     const instance = new ec2.Instance(this, "compute", {
       ami: vars.amiId,
-      instanceType: "t3.micro",
+      instanceType: "t3.small",
       tags: {
         Name: "CDKTF-Demo"
       }
