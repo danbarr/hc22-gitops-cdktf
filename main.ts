@@ -1,6 +1,7 @@
 import { Construct } from "constructs";
 import { App, TerraformStack, TerraformOutput, CloudBackend, NamedCloudWorkspace } from "cdktf";
-import { AwsProvider, ec2 } from "@cdktf/provider-aws";
+import { AwsProvider } from "@cdktf/provider-aws/lib/provider";
+import { Instance } from "@cdktf/provider-aws/lib/instance";
 import { Tfvars } from "./variables"
 
 class MyStack extends TerraformStack {
@@ -13,9 +14,9 @@ class MyStack extends TerraformStack {
       region: vars.awsRegion,
     });
 
-    const instance = new ec2.Instance(this, "compute", {
+    const instance = new Instance(this, "compute", {
       ami: vars.amiId,
-      instanceType: "t3.large",
+      instanceType: "t2.micro",
       tags: {
         Name: "CDKTF-Demo"
       }
@@ -32,6 +33,6 @@ const stack = new MyStack(app, "hc22-gitops-cdktf");
 new CloudBackend(stack, {
   hostname: "app.terraform.io",
   organization: "dbarr-org",
-  workspaces: new NamedCloudWorkspace("hc22-gitops-cdktf")
+  workspaces: new NamedCloudWorkspace("cdktf-gitops")
 });
 app.synth();
