@@ -33,6 +33,6 @@ const stack = new MyStack(app, "hc22-gitops-cdktf");
 new CloudBackend(stack, {
   hostname: "app.terraform.io",
   organization: "dbarr-org",
-  workspaces: new NamedCloudWorkspace("hc22-gitops-cdktf")
+  workspaces: new NamedCloudWorkspace("cdktf-gitops")
 });
 app.synth();
