@@ -16,9 +16,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: "20"
 
@@ -29,12 +29,12 @@ jobs:
         run: npx cdktf-cli get
 
       - name: Run Terraform CDK
-        uses: hashicorp/terraform-cdk-action@v0.1.30
+        uses: hashicorp/terraform-cdk-action@v5
         with:
-          terraformVersion: 1.5.3
-          cdktfVersion: 0.17.1
-          stackName: hc22-gitops-cdktf
+          cdktfVersion: 0.20.8
+          terraformVersion: 1.9.3
           mode: auto-approve-apply
+          stackName: hc22-gitops-cdktf
           terraformCloudToken: ${{ secrets.TF_API_TOKEN }}
           githubToken: ${{ secrets.GITHUB_TOKEN }}
         env:
